@@ -3,7 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-nativ
 import { useToken } from "@/context/TokenContext";
 import { router } from "expo-router";
 import { useRouter } from "expo-router";
-import { postLogin } from "@/services/api";
+import { postLogin } from "@/services/authServices";
 
 const Login = () => {
   const [password, setPassword] = useState("");

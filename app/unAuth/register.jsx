@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import { useToken } from "@/context/TokenContext";
 import { useRouter } from "expo-router";
-import { postSingin } from "@/services/api";
+import { postSingin } from "@/services/authServices";
 
 export default function Register() {
   const [username, setUsername] = useState("");
