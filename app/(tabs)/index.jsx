@@ -10,12 +10,13 @@ import {
 } from "react-native";
 import PostCard from "@/components/PostCard";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { getFeed, likePost, removeLike, getAllUsers } from "@/services/postServices";
+import { getFeed, getAllUsers } from "@/services/api";
+import { likePost, removeLike } from "@/services/likeServices"
 import { useToken } from "@/context/TokenContext";
 
 const Feed = () => {
   const [posts, setPosts] = useState([]);
-  const {userData} = useToken();
+  const { userData } = useToken();
   const [user, setUsers] = useState([]);
   const userId = userData._id;
 
