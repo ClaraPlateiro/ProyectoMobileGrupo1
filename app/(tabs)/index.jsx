@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { SafeAreaView } from 'react-native-safe-area-context';
 import {
   View,
   Text,
@@ -44,6 +45,7 @@ const Feed = () => {
 
   return (
     <View style={styles.container}>
+      <SafeAreaView>
       <FlatList
         data={posts}
         keyExtractor={(post) => post._id}
@@ -56,6 +58,7 @@ const Feed = () => {
         contentContainerStyle={styles.postsContainer}
         ListEmptyComponent={() => <Text>No hay publicaciones disponibles</Text>}
       />
+      </SafeAreaView>
     </View>
   );
 };
