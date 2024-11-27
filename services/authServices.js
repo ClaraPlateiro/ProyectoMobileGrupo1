@@ -1,6 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const localhost = `192.168.1.11`;
+const localhost = `10.166.0.136`;
 
 export const postLogin = async (email, password) => {
     const request = await fetch(`http://${localhost}:3001/api/auth/login`, {

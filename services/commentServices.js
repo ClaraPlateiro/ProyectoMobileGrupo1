@@ -1,6 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const localhost = `192.168.1.11`;
+const localhost = `10.166.0.136`;
 
 // Crear un nuevo comentario
 export const createComment = async (postId, content) => {
