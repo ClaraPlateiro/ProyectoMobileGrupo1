@@ -27,6 +27,7 @@ export const getProfileId = async (id) => {
 
 //Editar el perfil
 export const saveUserProfile = async (username, description, profilePicture) => {
+    const token = await AsyncStorage.getItem("token");
     try {
         const response = await fetch(
             `http://${localhost}:3001/api/user/profile/edit`,
@@ -54,6 +55,7 @@ export const saveUserProfile = async (username, description, profilePicture) => 
 };
 
 export const followUser = async (userId) => {
+    const token = await AsyncStorage.getItem("token");
     try {
         const response = await fetch(
             `http://${localhost}:3001/api/user/add-friend/${userId}`,
@@ -76,6 +78,7 @@ export const followUser = async (userId) => {
 };
 
 export const unfollowUser = async (userId) => {
+    const token = await AsyncStorage.getItem("token");
     try {
         const response = await fetch(
             `http://${localhost}:3001/api/user/remove-friend/${userId}`,
