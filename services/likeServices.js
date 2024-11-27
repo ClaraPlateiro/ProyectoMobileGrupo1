@@ -1,6 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const localhost = `192.168.1.11`;
+const localhost = `10.166.0.136`;
 
 export const likePost = async (postId) => {
     const token = await AsyncStorage.getItem("token");
