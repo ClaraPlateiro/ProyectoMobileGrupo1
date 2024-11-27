@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
 import { useToken } from "@/context/TokenContext";
 import { router } from "expo-router";
@@ -18,6 +19,7 @@ const Login = () => {
       console.log(data);
       saveToken(data.token);
       saveUserData(data);
+      await AsyncStorage.setItem("userId", data._id); // Guarda el ID del usuario
       router.push("/(tabs)");
     } catch (error) {
       setErrorMessage("Credenciales Incorrectas, Intente nuevamente");
@@ -46,13 +48,13 @@ const Login = () => {
         <Text style={styles.buttonText}>Ingresar</Text>
       </TouchableOpacity>
       <Text style={styles.loginText}>
-          <Text
-            style={styles.loginLink}
-            onPress={() => router.push(`/unAuth/register`)}
-          >
-            Crear cuenta
-          </Text>
+        <Text
+          style={styles.loginLink}
+          onPress={() => router.push(`/unAuth/register`)}
+        >
+          Crear cuenta
         </Text>
+      </Text>
       {errorMessage && <Text style={styles.errorText}>{errorMessage}</Text>}
     </View>
   );
