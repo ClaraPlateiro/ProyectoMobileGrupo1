@@ -1,6 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const localhost = `10.166.0.136`;
+const localhost = `10.13.167.3`;
 
 export const getProfileId = async (id) => {
     const token = await AsyncStorage.getItem("token");
