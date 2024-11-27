@@ -125,6 +125,7 @@ const styles = StyleSheet.create({
         flex: 1,
         padding: 20,
         alignItems: 'center',
+        backgroundColor: '#f5f5f5',
     },
     buttonGroup: {
         flexDirection: 'row',
@@ -133,14 +134,15 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
     button: {
-        backgroundColor: '#0a7ea4',
+        marginTop: 60,
+        backgroundColor: '#007bff',
         padding: 12,
         borderRadius: 8,
         width: '48%',
         alignItems: 'center',
     },
     uploadButton: {
-        backgroundColor: '#0a7ea4',
+        backgroundColor: '#28a745',
         padding: 15,
         borderRadius: 8,
         width: '100%',
@@ -162,13 +164,16 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         marginVertical: 10,
         resizeMode: 'cover',
+        borderWidth: 1,
+        borderColor: '#ddd',
     },
     captionInput: {
         width: '100%',
-        borderColor: '#ddd',
+        borderColor: '#ccc',
         borderWidth: 1,
         padding: 12,
         borderRadius: 8,
         marginBottom: 10,
+        backgroundColor: '#fff',
     }
 });
