@@ -33,13 +33,13 @@ const UserPage = () => {
 
                 const profileData = await getProfileId(userId);
                 setProfileInfo(profileData);
-              
+
                 const loggedInUserId = await AsyncStorage.getItem("userId");
 
                 const isFriend =
                     Array.isArray(profileData.user.friends) &&
                     profileData.user.friends.some(friend => friend._id === loggedInUserId);
-                setIsFollowing(isFriend); 
+                setIsFollowing(isFriend);
             } catch (error) {
                 console.error("Error al cargar el perfil:", error);
             } finally {
@@ -158,7 +158,6 @@ const styles = StyleSheet.create({
     postsContainer: {
         flexDirection: "row",
         flexWrap: "wrap",
-        justifyContent: "space-between",
     },
     postImage: {
         margin: 1,
