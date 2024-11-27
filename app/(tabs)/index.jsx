@@ -13,6 +13,8 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { getFeed, getAllUsers } from "@/services/api";
 import { likePost, removeLike } from "@/services/likeServices"
 import { useToken } from "@/context/TokenContext";
+import { useFocusEffect } from "@react-navigation/native";
+import { useCallback } from "react";
 
 const Feed = () => {
   const [posts, setPosts] = useState([]);
@@ -31,18 +33,21 @@ const Feed = () => {
     }
   };
 
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const data = await getFeed();
-        setPosts(data);
-      } catch (error) {
-        console.error("Error al obtener el feed:", error);
-      }
-    };
-    fetchPosts();
-    fetchAllUsers();
-  }, []);
+  const fetchPosts = async () => {
+    try {
+      const data = await getFeed();
+      setPosts(data);
+    } catch (error) {
+      console.error("Error al obtener el feed:", error);
+    }
+  };
+
+  useFocusEffect(
+    useCallback(() => {
+      fetchPosts();
+      fetchAllUsers();
+    }, [])
+  );
 
   return (
     <View style={styles.container}>
