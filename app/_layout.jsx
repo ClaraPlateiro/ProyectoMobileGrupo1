@@ -39,6 +39,11 @@ export default function RootLayout() {
           <Stack.Screen name="index" options={{ headerShown: false }} />
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="unAuth" options={{ headerShown: false }} />
+          {/* Ruta dinámica para usuarios */}
+          <Stack.Screen
+            name="user/[userId]"
+            options={{ headerShown: false }} // Oculta el encabezado
+          />
           <Stack.Screen name="+not-found" />
         </Stack>
         <StatusBar style="auto" />

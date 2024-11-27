@@ -13,12 +13,11 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { getProfileId, saveUserProfile, followUser, unfollowUser } from "@/services/profileServices";
+import { getProfileId, saveUserProfile } from "@/services/profileServices";
 
 const Profile = () => {
   const [profileInfo, setProfileInfo] = useState(null);
   const [modoEdicion, setModoEdicion] = useState(false);
-  const [isFollowing, setIsFollowing] = useState(false);
   const [loggedInUserId, setLoggedInUserId] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -34,10 +33,6 @@ const Profile = () => {
 
         const profileData = await getProfileId(userId);
         setProfileInfo(profileData);
-
-        setIsFollowing(
-          profileData.user.friends.some((friend) => friend._id === userId)
-        );
       } catch (error) {
         console.error("Error al cargar el perfil:", error);
       } finally {
@@ -104,6 +99,9 @@ const Profile = () => {
           />
           <View>
             <Text style={styles.username}>{profileInfo.user.username}</Text>
+            <Text style={styles.description}>
+              {profileInfo.user.description || "Sin descripción"}
+            </Text>
             {isLoggedUserProfile && (
               <TouchableOpacity onPress={alternarEdicion}>
                 <Text style={styles.editButton}>Edit Profile</Text>
@@ -180,6 +178,7 @@ const styles = StyleSheet.create({
   header: { flexDirection: "row", alignItems: "center", padding: 16 },
   profilePicture: { width: 80, height: 80, borderRadius: 40, marginRight: 16 },
   username: { fontSize: 18, fontWeight: "bold" },
+  description: { fontSize: 14, color: "gray", marginTop: 8 },
   editButton: { color: "blue", marginTop: 8 },
   stats: { flexDirection: "row", justifyContent: "space-around", padding: 16 },
   postsContainer: {
