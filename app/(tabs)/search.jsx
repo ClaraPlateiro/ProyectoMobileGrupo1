@@ -47,6 +47,7 @@ const Search = () => {
     };
 
     const handleClick = (userId) => {
+        router.push(`/user/${userId}`);
     };
 
     return (
