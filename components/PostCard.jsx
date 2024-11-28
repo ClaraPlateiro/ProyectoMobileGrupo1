@@ -3,12 +3,13 @@ import { View, Text, Image, TouchableOpacity, TextInput, FlatList, StyleSheet } 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useToken } from "@/context/TokenContext";
 import { useRouter } from "expo-router";
-import { likePost, removeLike, createComment,removeComment } from "@/services/api";
+import { likePost, removeLike } from "@/services/likeServices";
+import { createComment, removeComment } from '@/services/commentServices'
 
-const localhost = `10.166.0.136`;
+const localhost = `192.168.1.11`;
 
 const PostCard = ({ post, setPosts }) => {
-  const {userData} = useToken();
+  const { userData } = useToken();
   const [showComments, setShowComments] = useState(false);
   const [newComment, setNewComment] = useState('');
 
@@ -17,7 +18,7 @@ const PostCard = ({ post, setPosts }) => {
     try {
       let updatedPost;
       if (post.likes.includes(userData._id)) {
-        updatedPost = await removeLike(post._id); 
+        updatedPost = await removeLike(post._id);
       } else {
         updatedPost = await likePost(post._id);
       }
@@ -92,7 +93,7 @@ const PostCard = ({ post, setPosts }) => {
       </View>
 
       <Image
-        source={{ uri: `http://${localhost}:3001/${post.imageUrl.replace(/\\/g,"/")}` }}
+        source={{ uri: `http://${localhost}:3001/${post.imageUrl.replace(/\\/g, "/")}` }}
         style={styles.postCardImage}
       />
 
@@ -104,7 +105,7 @@ const PostCard = ({ post, setPosts }) => {
         <TouchableOpacity style={styles.postCardLikeIcon} onPress={handleLikePost}>
           <Text style={styles.likeButtonText}>
             {post.likes.includes(userData._id) ? 'Dislike' : 'Like'}
-            
+
           </Text>
         </TouchableOpacity>
 
