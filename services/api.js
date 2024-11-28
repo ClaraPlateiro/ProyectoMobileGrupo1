@@ -1,6 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const localhost = `10.166.0.136`;
+const localhost = `192.168.1.11`;
 
 export const getFeed = async () => {
   const token = await AsyncStorage.getItem("token");
